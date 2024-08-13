@@ -3,5 +3,5 @@ Select TO_CHAR(t.trans_date, 'YYYY-MM') as "month", t.country as "country", Coun
 from Transactions t left join (Select id, amount, country, trans_date
 from Transactions 
 where state = 'approved' ) a
-on t.id = a.id
+on t.trans_date = a.trans_date and t.id = a.id
 Group by t.country, TO_CHAR(t.trans_date, 'YYYY-MM'); 
